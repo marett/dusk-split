@@ -1,7 +1,7 @@
 body {
   background-color: #090d1e;
-  background: -webkit-linear-gradient(#090d1e, #0f1933, #0e245a, #213f8c, #21539a, #2f6dab, #3178b8, #2a73b5, #2c5194, #3e3a83, #5a468a, #854a77, #be6669, #d2886c);
-  background: linear-gradient(#090d1e, #0f1933, #0e245a, #213f8c, #21539a, #2f6dab, #3178b8, #2a73b5, #2c5194, #3e3a83, #5a468a, #854a77, #be6669, #d2886c);
+  background: -webkit-linear-gradient(274deg, #090d1e, #0f1933, #0e245a, #213f8c, #21539a, #2f6dab, #3178b8, #2a73b5, #2c5194, #3e3a83, #5a468a, #854a77, #be6669, #d2886c);
+  background: linear-gradient(176deg, #090d1e, #0f1933, #0e245a, #213f8c, #21539a, #2f6dab, #3178b8, #2a73b5, #2c5194, #3e3a83, #5a468a, #854a77, #be6669, #d2886c);
   font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-weight: 400; }
 
@@ -113,6 +113,27 @@ section {
 .stars2 {
   background-image: url(../images/stars2.png);
   background-size: 30%; }
+
+.comet, .comet2 {
+  position: fixed;
+  top: 320px;
+  bottom: 0;
+  left: 800px;
+  right: 0;
+  height: 140px;
+  width: 140px;
+  background-image: url(../images/comet.png);
+  background-size: 100%;
+  display: block;
+  -webkit-transform: translate(0, 0px);
+      -ms-transform: translate(0, 0px);
+          transform: translate(0, 0px);
+  -webkit-transform: translate3d(0, 0px, 0px);
+          transform: translate3d(0, 0px, 0px); }
+
+.comet2 {
+  top: 290px;
+  left: -11200px; }
 
 .right {
   color: #fdfdfd;

@@ -1,5 +1,12 @@
+/**
+ **		Based on code & theory from Paul Lewis's article:
+ **		http://www.html5rocks.com/en/tutorials/speed/animations/
+ **
+ */
+
+
 var lastScrollY = 0;
-var ticking = false;
+ticking = false;
 
 function onScroll() {
 	lastScrollY = window.scrollY;
@@ -13,6 +20,18 @@ function requestTick() {
 	}
 }
 
+
+/*
+
+
+-webkit-transform: translate(0px, 0px);
+-ms-transform: translate(0px, 0px);
+transform: translate(0px, 0px);
+-webkit-transform: translate3d(0px, 0px, 0px);
+transform: translate3d(0px, 0px, 0px);
+
+*/
+
 /**
  * Our animation callback
  */
@@ -20,19 +39,58 @@ function update() {
 
 	var scroll = $(window).scrollTop();
 
-	$(".parallaxDown").each(function () {
-		var paraDown = $(this);
-		paraDown.css("transform", "translate(0," + Math.round((scroll) / paraDown.data("rate")) + "px").css("transform", "translate3d(0," + Math.round((scroll) / paraDown.data("rate")) + "px" + ",0)");
+	$(".parallax").each(function () {
+		var para 				= $(this);
+		var paraRate = para.data("rate");
+		var paraDir 	= para.data("direction");
+		
+		if (paraDir === "up" || "down") {
+		
+			if (paraDir === "down") {
+				var paraAmount = Math.round((scroll) / paraRate);
+				para
+				.css("-webkit-transform", "translate(0," + paraAmount + "px")
+				.css("-ms-transform", "translate(0," + paraAmount + "px")
+				.css("transform", "translate(0," + paraAmount + "px")
+				.css("-webkit-transform", "translate3d(0," + paraAmount + "px" + ",0)")
+				.css("transform", "translate3d(0," + paraAmount + "px" + ",0)");
+			} 
+			if (paraDir === "up") {																										
+				var paraAmount = Math.round((scroll) / -paraRate);
+				para
+				.css("-webkit-transform", "translate(0," + paraAmount + "px")
+				.css("-ms-transform", "translate(0," + paraAmount + "px")
+				.css("transform", "translate(0," + paraAmount + "px")
+				.css("-webkit-transform", "translate3d(0," + paraAmount + "px" + ",0)")
+				.css("transform", "translate3d(0," + paraAmount + "px" + ",0)");
+			}
+			
+		}	
+		if (paraDir === "left" || "right") {
+		
+			if (paraDir === "right") {
+				var paraAmount = Math.round((scroll) / -paraRate);
+		 	para
+				.css("-webkit-transform", "translate(" + paraAmount + "px" + ",0)")
+				.css("-ms-transform", "translate(" + paraAmount + "px" + ",0)")
+				.css("transform", "translate(" + paraAmount + "px" + ",0)")
+				.css("-webkit-transform", "translate3d(" + paraAmount + "px" + ",0,0)")
+				.css("transform", "translate3d(" + paraAmount + "px" + ",0,0)");
+			}	
+			if (paraDir === "left") {
+				var paraAmount = Math.round((scroll) / paraRate);
+		 	para
+				.css("-webkit-transform", "translate(" + paraAmount + "px" + ",0)")
+				.css("-ms-transform", "translate(" + paraAmount + "px" + ",0)")
+				.css("transform", "translate(" + paraAmount + "px" + ",0)")
+				.css("-webkit-transform", "translate3d(" + paraAmount + "px" + ",0,0)")
+				.css("transform", "translate3d(" + paraAmount + "px" + ",0,0)");
+					}
+		}
+		
+		
 	});
-
-	$(".parallaxUp").each(function () {
-		var paraUp = $(this);
-		paraUp.css("transform", "translate3d(0," + Math.round((scroll) / -paraUp.data("rate")) + "px" + ",0)");
-
-		//console.log(paraUp.data("rate"));
-	});
-
-
+		
 	// allow further rAFs to be called
 	ticking = false;
 }

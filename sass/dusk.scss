@@ -37,7 +37,7 @@ $xs-nocols: "only screen and (min-width : 380px)";
 body {
 	background-color: $gn2;
 	//background: linear-gradient($gn2, $gn1, $g0, $g1, $g2, $g3, $g4, $g5, $g6, $g7, $g8, $g9, $g10, $g11, $g12, $g13, $g14, $g15, $g16 );
-	background: linear-gradient($gn2, $gn1, $g0, $g1, $g2, $g3, $g4, $g5, $g6, $g7, $g8, $g9, $g10, $g11);
+	background: linear-gradient(176deg, $gn2, $gn1, $g0, $g1, $g2, $g3, $g4, $g5, $g6, $g7, $g8, $g9, $g10, $g11);
 	font-family: $sans-font;
 	font-weight: 400;
 }
@@ -144,6 +144,30 @@ section {
 	background-image: url(../images/stars2.png);
 	background-size: 30%;
 }
+
+
+.comet {
+	position: fixed;
+	top: 320px;
+	bottom: 0;
+	left: 800px;
+	right: 0;
+	height: 140px;
+	width: 140px;
+	background-image: url(../images/comet.png);
+	background-size: 100%;
+	display: block;
+	transform: translate(0, 0px);
+	transform: translate3d(0, 0px, 0px);
+	
+}
+.comet2 {
+	@extend .comet;
+	top: 290px;
+	left: -11200px;
+}
+
+
 .right {
 	color: $lbase;
 	min-height: 200px;
