@@ -40,57 +40,53 @@ function update() {
 	var scroll = $(window).scrollTop();
 
 	$(".parallax").each(function () {
-		var para 				= $(this);
+		var para = $(this);
 		var paraRate = para.data("rate");
-		var paraDir 	= para.data("direction");
-		
-		if (paraDir === "up" || "down") {
-		
-			if (paraDir === "down") {
-				var paraAmount = Math.round((scroll) / paraRate);
-				para
+		var paraDir = para.data("direction");
+
+		if (paraDir === "down") {
+			var paraAmount = Math.round((scroll) / paraRate);
+			para
 				.css("-webkit-transform", "translate(0," + paraAmount + "px")
 				.css("-ms-transform", "translate(0," + paraAmount + "px")
 				.css("transform", "translate(0," + paraAmount + "px")
 				.css("-webkit-transform", "translate3d(0," + paraAmount + "px" + ",0)")
 				.css("transform", "translate3d(0," + paraAmount + "px" + ",0)");
-			} 
-			if (paraDir === "up") {																										
-				var paraAmount = Math.round((scroll) / -paraRate);
-				para
-				.css("-webkit-transform", "translate(0," + paraAmount + "px")
-				.css("-ms-transform", "translate(0," + paraAmount + "px")
-				.css("transform", "translate(0," + paraAmount + "px")
-				.css("-webkit-transform", "translate3d(0," + paraAmount + "px" + ",0)")
-				.css("transform", "translate3d(0," + paraAmount + "px" + ",0)");
-			}
-			
-		}	
-		if (paraDir === "left" || "right") {
-		
-			if (paraDir === "right") {
-				var paraAmount = Math.round((scroll) / -paraRate);
-		 	para
-				.css("-webkit-transform", "translate(" + paraAmount + "px" + ",0)")
-				.css("-ms-transform", "translate(" + paraAmount + "px" + ",0)")
-				.css("transform", "translate(" + paraAmount + "px" + ",0)")
-				.css("-webkit-transform", "translate3d(" + paraAmount + "px" + ",0,0)")
-				.css("transform", "translate3d(" + paraAmount + "px" + ",0,0)");
-			}	
-			if (paraDir === "left") {
-				var paraAmount = Math.round((scroll) / paraRate);
-		 	para
-				.css("-webkit-transform", "translate(" + paraAmount + "px" + ",0)")
-				.css("-ms-transform", "translate(" + paraAmount + "px" + ",0)")
-				.css("transform", "translate(" + paraAmount + "px" + ",0)")
-				.css("-webkit-transform", "translate3d(" + paraAmount + "px" + ",0,0)")
-				.css("transform", "translate3d(" + paraAmount + "px" + ",0,0)");
-					}
 		}
-		
-		
+
+		if (paraDir === "up") {
+			var paraAmount = Math.round((scroll) / -paraRate);
+			para
+				.css("-webkit-transform", "translate(0," + paraAmount + "px")
+				.css("-ms-transform", "translate(0," + paraAmount + "px")
+				.css("transform", "translate(0," + paraAmount + "px")
+				.css("-webkit-transform", "translate3d(0," + paraAmount + "px" + ",0)")
+				.css("transform", "translate3d(0," + paraAmount + "px" + ",0)");
+		}
+
+		if (paraDir === "right") {
+			var paraAmount = Math.round((scroll) / -paraRate);
+			para
+				.css("-webkit-transform", "translate(" + paraAmount + "px" + ",0)")
+				.css("-ms-transform", "translate(" + paraAmount + "px" + ",0)")
+				.css("transform", "translate(" + paraAmount + "px" + ",0)")
+				.css("-webkit-transform", "translate3d(" + paraAmount + "px" + ",0,0)")
+				.css("transform", "translate3d(" + paraAmount + "px" + ",0,0)");
+		}
+
+		if (paraDir === "left") {
+			var paraAmount = Math.round((scroll) / paraRate);
+			para
+				.css("-webkit-transform", "translate(" + paraAmount + "px" + ",0)")
+				.css("-ms-transform", "translate(" + paraAmount + "px" + ",0)")
+				.css("transform", "translate(" + paraAmount + "px" + ",0)")
+				.css("-webkit-transform", "translate3d(" + paraAmount + "px" + ",0,0)")
+				.css("transform", "translate3d(" + paraAmount + "px" + ",0,0)");
+		}
+
+
 	});
-		
+
 	// allow further rAFs to be called
 	ticking = false;
 }
@@ -109,5 +105,3 @@ window.requestAnimFrame = (function () {
 			window.setTimeout(callback, 1000 / 60);
 		};
 })();
-
-
