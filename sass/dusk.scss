@@ -78,9 +78,46 @@ section {
 	background-color: $dbase;
 }
 .name-tag {
-	margin-left: -14%;
-	padding: 0.4em 1em 0.4em 1em;
+	position: relative;
+	z-index: 1;
 	display: inline-block;
+	min-height: 62px;
+	min-width: 400px;
+	color: $lbase;
+	margin: 0px;
+	padding: 0;
+	top:-4px;
+	transform: rotate(-3deg);
+	transform: rotateZ(-3deg);
+	
+	span {
+		position: absolute;
+		display: block;
+		background-color: $dbase;
+		padding: 0.4em 2em 0.4em 2em;
+		margin-left: -14%;
+		
+		&:before, &:after{
+				z-index:-1;
+				position: absolute;
+				content: '';
+				height: 12px;
+				bottom: 15px;
+				left: 10px;
+				width: 50%;
+				top: 60%;
+				max-width:300px;
+				transform: rotateZ(-3deg);
+				transform: rotate(-3deg);
+				box-shadow: 0 2px 12px $g2, 0 3px 14px $g6,  -2px 4px 16px $g10,  0 5px 18px $g11;
+		}
+		&:after {
+			left: auto;
+			right: 10px;
+			transform: rotateZ(3deg);
+			transform: rotate(3deg);
+		}
+	}
 }
 .page {
 	position: relative;
@@ -109,14 +146,16 @@ section {
 }
 .right {
 	color: $lbase;
-	height: 400px;
-	
-		overflow: hidden;
-		position: relative;
+	min-height: 200px;
+	overflow: hidden;
+	position: relative;
+	padding-bottom: 80px;
+	padding-top: 60px;
 	@media #{$md-cols} {
 		display: block;
 		height: 100%;
 		height: auto;
+		padding: 0;
 	}
 	.right-fixed {
 		@media #{$md-cols} {
@@ -133,9 +172,6 @@ section {
 			font-weight: 300;
 		}
 		h1 {
-			@media #{$sm-nocols} {
-				margin-top: 10%;
-			}
 			@media #{$md-cols} {
 				margin-top: 20%;
 			}
