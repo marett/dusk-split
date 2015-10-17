@@ -1,6 +1,5 @@
 $dbase: rgb(12, 13, 18);
 $lbase: rgb(253, 253, 253);
-
 //dusk_gradient_colours
 $gn2: #090d1e;
 $gn1: #0f1933;
@@ -32,12 +31,17 @@ Helvetica,
 sans-serif;
 $lg-cols: "only screen and (min-width : 1200px)";
 $md-cols: "only screen and (min-width : 992px)";
-$sm-nocols: "only screen and (min-width : 480px)";
+$sm-nocols: "only screen and (min-width : 768px)";
 $xs-nocols: "only screen and (min-width : 380px)";
 body {
 	background-color: $gn2;
 	//background: linear-gradient($gn2, $gn1, $g0, $g1, $g2, $g3, $g4, $g5, $g6, $g7, $g8, $g9, $g10, $g11, $g12, $g13, $g14, $g15, $g16 );
-	background-image: linear-gradient(170deg, $gn2, $gn1, $g0, $g1, $g2, $g3, $g4, $g5, $g6, $g7, $g8, $g9, $g10, $g11);
+	background-image: linear-gradient(140deg, $gn2, $gn1, $g0, $g1, $g2, $g3, $g4, $g5, $g6, $g7, $g8, $g9, $g10, $g11);
+	@media #{$md-cols}{
+			background-image: linear-gradient(170deg, $gn2, $gn1, $g0, $g1, $g2, $g3, $g4, $g5, $g6, $g7, $g8, $g9, $g10, $g11);
+
+	}
+	
 	background-repeat: no-repeat;
 	font-family: $sans-font;
 	font-weight: 400;
@@ -62,17 +66,20 @@ a:hover {
 }
 section {
 	padding-top: 40px;
-	padding-bottom: 30px;
+	padding-bottom: 40px;
 	padding-left: 15px;
 	padding-right: 15px;
-	@media #{$sm-nocols}{
+	@media #{$sm-nocols} {
 		padding-left: 30px;
 		padding-right: 30px;
 	}
-	@media #{$md-cols}{
+	@media #{$md-cols} {
 		padding-left: 0;
 		padding-right: 0;
 	}
+>h1 {
+	margin-top: 0;
+}
 }
 .dbase {
 	color: $lbase;
@@ -90,30 +97,29 @@ section {
 	color: $lbase;
 	margin: 0px;
 	padding: 0;
-	top:-4px;
+	top: -4px;
 	transform: rotate(-3deg);
 	transform: rotateZ(-3deg);
-	
 	span {
 		position: absolute;
 		display: block;
 		background-color: $dbase;
 		padding: 0.4em 2em 0.4em 2em;
 		margin-left: -14%;
-		
-		&:before, &:after{
-				z-index:-1;
-				position: absolute;
-				content: '';
-				height: 12px;
-				bottom: 15px;
-				left: 10px;
-				width: 50%;
-				top: 60%;
-				max-width:300px;
-				transform: rotateZ(-3deg);
-				transform: rotate(-3deg);
-				box-shadow: 0 2px 12px $g2, 0 3px 14px $g6,  -2px 4px 16px $g10,  0 5px 18px $g11;
+		&:before,
+		&:after {
+			z-index: -1;
+			position: absolute;
+			content: '';
+			height: 12px;
+			bottom: 15px;
+			left: 10px;
+			width: 50%;
+			top: 60%;
+			max-width: 300px;
+			transform: rotateZ(-3deg);
+			transform: rotate(-3deg);
+			box-shadow: 0 2px 12px $g2, 0 3px 14px $g6, -2px 4px 16px $g10, 0 5px 18px $g11;
 		}
 		&:after {
 			left: auto;
@@ -136,7 +142,13 @@ section {
 	left: 0;
 	right: 0;
 	background-image: url(../images/stars.svg);
-	background-size: 20%;
+	background-size: 80%;
+	@media #{$sm-nocols} {
+		background-size: 40%;
+	}
+	@media #{$md-cols} {
+		background-size: 20%;
+	}
 	height: 100%;
 	width: 100%;
 	display: block;
@@ -148,8 +160,6 @@ section {
 	background-image: url(../images/stars2.svg);
 	background-size: 30%;
 }
-
-
 .comet {
 	position: fixed;
 	top: 320px;
@@ -162,24 +172,15 @@ section {
 	display: block;
 	transform: translate(0, 0px);
 	transform: translate3d(0, 0px, 0px);
-	
 }
 .comet2 {
 	@extend .comet;
 	top: 290px;
 	left: -11200px;
 	> img {
-		
-        -moz-transform: scaleX(-1);
-        -o-transform: scaleX(-1);
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
-        filter: FlipH;
-        -ms-filter: "FlipH";
+		transform: scaleX(-1);
 	}
 }
-
-
 .right {
 	color: $lbase;
 	min-height: 200px;
@@ -194,6 +195,13 @@ section {
 		padding: 60px;
 	}
 	.right-fixed {
+		padding: 100px 0px;
+		max-width: 768px;
+		margin: 0 auto;
+		text-align: center;
+		@media #{$sm-nocols} {
+			text-align: left;
+		}
 		@media #{$md-cols} {
 			position: fixed;
 			top: 0;
@@ -203,6 +211,7 @@ section {
 			margin: 0;
 			padding: 60px 40px;
 			width: inherit;
+			text-align: center;
 		}
 		p {
 			font-weight: 300;
@@ -225,34 +234,39 @@ section {
 .left {
 	background-color: $lbase;
 	min-height: 5200px;
+	padding-left: 0;
+	padding-right: 0;
+	>.container-fluid {
 		padding-left: 0;
 		padding-right: 0;
-	>.container-fluid {
-	padding-left: 0;
-		padding-right: 0;
 		>section>.row {
-			margin-left: 0; 
+			margin-left: 0;
 			margin-right: 0;
 		}
 	}
 }
-
 .circle-mask {
 	height: 100px;
 	width: 100px;
 	border-radius: 120px;
-	margin: 0px auto 30px;
+	margin: 0px auto;
+	@media #{$xs-nocols} {
+		margin-bottom: 30px;
+	}
+	@media #{$sm-nocols} {
+		margin-bottom: 0px;
+	}
+	@media #{$md-cols}{
+		margin-bottom: 30px;
+	}
 	overflow: hidden;
 }
-
 .trans {
-	color: rgba(255,255,255,0.1);
+	color: rgba(255, 255, 255, 0.1);
 }
-
 .mask-border {
-	text-shadow: 0 20px 0  $lbase;
+	text-shadow: 0 20px 0 $lbase;
 }
-
 .strike {
 	text-decoration: line-through;
 }
