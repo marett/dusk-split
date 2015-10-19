@@ -20,19 +20,15 @@ $g13: #99645e;
 $g14: #623450;
 $g15: #382144;
 $g16: #1d112d;
-$mono-font: 'PT Mono',
-'Lucida Console',
-Monaco,
-monospace;
-$sans-font: 'Roboto',
-'Helvetica Neue',
-Arial,
-Helvetica,
-sans-serif;
+
+$mono-font: 'PT Mono','Lucida Console',Monaco,monospace;
+$sans-font: 'Roboto','Helvetica Neue',Arial,Helvetica,sans-serif;
+
 $lg-cols: "only screen and (min-width : 1200px)";
 $md-cols: "only screen and (min-width : 992px)";
 $sm-nocols: "only screen and (min-width : 768px)";
 $xs-nocols: "only screen and (min-width : 380px)";
+
 body {
 	background-color: $gn2;
 	//background: linear-gradient($gn2, $gn1, $g0, $g1, $g2, $g3, $g4, $g5, $g6, $g7, $g8, $g9, $g10, $g11, $g12, $g13, $g14, $g15, $g16 );
@@ -177,7 +173,7 @@ section {
 	@extend .comet;
 	top: 290px;
 	left: -11200px;
-	> img {
+	img {
 		transform: scaleX(-1);
 	}
 }
